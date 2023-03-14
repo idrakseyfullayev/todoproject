@@ -1,0 +1,39 @@
+{% extends 'components/base.html' %}
+
+{% block title %} <title>End Time Update</title> {% endblock %}
+
+{% block content %}
+
+
+<div class="container mt-3">
+  <nav class="navbar bg-primary-subtle rounded-3" style="width: 25%;">
+     <div class="container-fluid">
+       
+       <form class="d-flex" method="POST">
+         {% csrf_token %}
+         {% if request.user.is_authenticated %}
+         <!-- <input type="hidden" name="choice" value="create"> -->
+         <label for="time"><b><h4>Time</h4></b></label>
+         <input class="form-control me-2" type="time" name="time" id ="time"  aria-label="time_update">
+         <button class="btn btn-success" type="submit">Update</button>
+         {% else %}
+         <input class="form-control me-2" type="time" name="time"  aria-label="time_update">
+         <a class="btn btn-outline-success" href="{% url 'account:login' %}" type="submit">Update</a>
+         {% endif %}
+       </form>
+     </div>
+   </nav>
+
+   {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+
+  </div>
+
+  
+{% endif %}
+  
+{% endblock%}

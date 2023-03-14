@@ -1,0 +1,143 @@
+{% extends 'components/base.html' %}
+
+{% block title %} <title>Home Page</title> {% endblock %}
+
+{% block content %}
+<div class="container mt-3">
+ <nav class="navbar bg-primary-subtle rounded-3">
+    <div class="container-fluid">
+      
+      <form class="d-flex" method="POST">
+        {% csrf_token %}
+        {% if request.user.is_authenticated %}
+        <!-- <input type="hidden" name="choice" value="create"> -->
+        <label for="work" style="width:60%; display:block;"><h4 class="w-100" style="width:100%;">Work</h4></label>
+        <input class="form-control me-2" placeholder type="text" name="work" id ="work"  aria-label="input">
+        <!-- <button class="btn btn-success" type="submit">Add</button> -->
+        <label for="start_time" style="width:120%; display:block;"><h4 class="w-100" style="width:100%;">Start Time</h4 ></label>
+        <input class="form-control me-2" type="time" name="start_time" id ="start_time"  aria-label="time">
+        <!-- <button class="btn btn-success" type="submit">Add</button> -->
+        <label for="end_time" style="width:105%; display:block;"><h4 class="w-100" style="width:100%;">End Time</h4></label>
+        <input class="form-control me-2" type="time" name="end_time" id ="end_time"  aria-label="time">
+        <button class="btn btn-success" type="submit">Add</button>
+        {% else %}
+        <label for="work" style="width:60%; display:block;"><h4 class="w-100" style="width:100%;">Work</h4></label>
+        <input class="form-control me-2" type="text" name="work" id ="work"  aria-label="input">
+        <!-- <a class="btn btn-outline-success" href="{% url 'account:login' %}" type="submit">Add</a> -->
+        <label for="start_time" style="width:120%; display:block;"><h4 class="w-100" style="width:100%;">Start Time</h4></label>
+        <input class="form-control me-2" type="time" name="start_time" id ="start_time"  aria-label="time">
+        <!-- <a class="btn btn-outline-success" href="{% url 'account:login' %}" type="submit">Add</a> -->
+        <label for="end_time" style="width:105%; display:block;"><h4 class="w-100" style="width:100%;">End Time</h4></label>
+        <input class="form-control me-2" type="time" name="end_time" id ="end_time"  aria-label="time">
+        <a class="btn btn-success" href="{% url 'account:login' %}" type="submit">Add</a>
+        {% endif %}
+      </form>
+    </div>
+  </nav>
+  
+
+
+  {% if messages %}
+  <div class=" w-25 p-3 text-danger-emphasis   rounded-3">
+<ul class="messages">
+  Information:
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+</div>
+{% endif %}
+<br>
+
+
+
+
+<table class="table table-light table-striped">
+  <thead class="table-light">
+    <tr>
+      <th scope="col"></th>
+      <th scope="col"><div class="text-primary"><h4>Works</h4></div></th>
+      <th scope="col"><h4>Start Times</h4></th>
+      <th scope="col"><h4>End Times</h4></th>
+      <th scope="col"><div class="text-danger"><h4>Delete Work</h4></div></th>
+      <!-- <th scope="col">Update</th> -->
+      
+    </tr>
+  </thead>
+  <tbody>
+    {% for user_work in user_works %}
+    <tr>
+      </div><td scope="row"><b>{{ forloop.counter }}</b></td>
+      <td><div class="text-primary"><h5>{{user_work.name}}</h5></div><div><a class="w-10 p-1 btn btn-success btn-sm"
+          href="{% url 'todo:work_update' user_work.id %}">Update</a></div></td>
+
+      <td><h5>{{user_work.start_time | time:"H:i"}}</h5><div><a class="w-10 p-1 btn btn-success btn-sm"
+          href="{% url 'todo:start_time_update' user_work.id %}">Update</a></div></td>
+
+      <td><h5>{% if user_work.end_time %}{{user_work.end_time | time:"H:i"}}{% else %}-{%endif%}</h5><div><a class="w-10 p-1 btn btn-success btn-sm"
+            href="{% url 'todo:end_time_update' user_work.id %}">Update</a></div></td>      
+      
+      <td><div class="container margin-top mt-3"><a class="btn btn-danger btn-sm"  href="{% url 'todo:delete' user_work.id %}">Delete</a></div></td>      
+            
+      <!-- <div><a href="{% url 'todo:work_update' user_work.id %}">Update</a></div> -->
+      <!-- <td> -->
+        <!-- <form class="d-flex" method="POST"> -->
+          <!-- {% csrf_token %}
+          <input type="hidden" name="choice" value="update">
+          <input type="hidden" name="id" value="{{ user_work.id }}"> -->
+          <!-- {% if request.user.is_authenticated %} -->
+          <!-- <input class="form-control me-2" type="text" name="work" id ="work"  aria-label="input"> -->
+          <!-- <button class="btn btn-outline-success" type="submit">Update</button> -->
+          <!-- {% else %} -->
+          <!-- <input class="form-control me-2" type="text" name="work"  aria-label="input"> -->
+          <!-- <a class="btn btn-outline-success" href="{% url 'account:login' %}" type="submit">Add</a> -->
+          <!-- {% endif %} -->
+        <!-- </form> -->
+      <!-- </td> -->
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+  
+  
+  
+
+
+</div>
+
+{% endblock %}
+
+<!-- <div style="margin-top:  50px;" class="ui container">
+  <h1 class="ui center alinged header"> my meneger </h1>
+  <h3 class="test_style">times</h3>
+  <form class="ui form" action="{% url 'todo:index' %}" method="POST">
+    {% csrf_token %}
+    <div class="field">
+      <label>new</label>
+      <input type="text" name="title" placeholder="input new work"><br>
+    </div>
+    <button class="ui teal basic bottom" type="submit">app</button>
+  </form>
+
+  <div class="ui segment">
+    <p class="ui big header">work</p>
+
+
+    <span class="ui gray label"> not done</span>
+    <a class="ui primary basic button" href="{% url 'todo:index' %}">clossed</a>
+
+    <span class="ui green label">done</span>
+    <a calss="ui blie button" href="{% url 'todo:index' %}">openn</a>
+
+    <a class="ui negative basic button" href="{% url 'todo:index' %}"delete></a>
+
+  </div>
+
+
+  </div> -->
+
+
+
+
