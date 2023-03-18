@@ -1,0 +1,35 @@
+#                                              Django
+
+
+MVC(Model,View,Controller) - basqa dillerde
+MVT(Model,View,Template) - Python dilinde
+
+pip install pipenv  -  virtual muhiti yukleyir
+django-admin startproject <name> - proyekt yaradir  (django-admin.py)?????????????
+pipenv shell - virtual muhit yaradir
+pip install django  -  django-nu yukleyir
+pip install <kitabxana adi> - kitabxana yuklemek ucun
+pip freeze - yuklenmis kitabxanalari gosterir
+pip freeze > requirements.txt - kitabxanalari bu fayla yigir
+cd <project_name>  - proyektin qovluguna daxil olur
+python manage.py startapp <app_name>  -  app yaradir (django-admin startapp <app_name> - app yaradir)
+----------------------------------------------------------------------------------------------------
+python manage.py makemigrations - database cedvellerini hazirlayir
+python manage.py migrate -   database cedvellerini yaradir
+python manage.py createsuperuser - super istifadeci yaradir
+python manage.py changepassword <username> - super istifadecinin parolunu yenileyir
+python manage.py runserver - serveri aktivlesdirir
+
+
+git init - proyekt ucun bir defe yazilir
+git clone <url>- proyekt ucucn bir defe yazilir
+------------------------------------------
+git status -  git-in veziyyetin yoxlayiriq
+git add . - deyisiklik olmus fayllari ad edir
+git commit -m "mesaj" -  bu merhelede deyisiklik barade mesaj gonderirirem
+git branch <name>
+git push origin master - oldugum yerden github-a meleumatlari gonderirirem
+------------------------------------------------------------------------
+error verirse - git remote add origin <url>
+
+

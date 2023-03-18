@@ -77,7 +77,7 @@ def update_work(request, id):
         name = request.POST.get("work")
         if not name:
             messages.info(request, "enter work name please")
-            return render(request, "work_update.html")
+            return render(request, "todo:work_update")
         else:
             user_work.name = name
             user_work.save()

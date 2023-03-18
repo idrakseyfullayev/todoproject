@@ -74,7 +74,7 @@
       <td><h5>{{user_work.start_time | time:"H:i"}}</h5><div><a class="w-10 p-1 btn btn-success btn-sm"
           href="{% url 'todo:start_time_update' user_work.id %}">Update</a></div></td>
 
-      <td><h5>{% if user_work.end_time %}{{user_work.end_time | time:"H:i"}}{% else %}-{%endif%}</h5><div><a class="w-10 p-1 btn btn-success btn-sm"
+      <td><h5>{% if user_work.end_time %}{{user_work.end_time | time:"H:i"}}{% else %}-------{%endif%}</h5><div><a class="w-10 p-1 btn btn-success btn-sm"
             href="{% url 'todo:end_time_update' user_work.id %}">Update</a></div></td>      
       
       <td><div class="container margin-top mt-3"><a class="btn btn-danger btn-sm"  href="{% url 'todo:delete' user_work.id %}">Delete</a></div></td>      
