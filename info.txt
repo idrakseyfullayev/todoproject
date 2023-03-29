@@ -35,3 +35,33 @@ git push origin master - oldugum yerden meleumatlari github master-ine  gonderir
 error verirse - git remote add origin < <repository> url>
 
 
+pythonanywhere
+virtual env yaratmaq:
+ls
+mkvirtualenv myvirtualenv --python=/usr/bin/python3.10 - virtual envoriment yaradir
+git init
+git clone - https://github.com/idrakseyfullayev/todoproject.git
+pip install -r requirements.txt - requirements.txt fayli lazimi yere yuklemek
+
+workon <virtualenv_name> - virtual muhiti aktiv temek
+git pull origin todoprupdate-8 
+error verirse
+git reset --hard  - proyekt update edlilende error: Your local changes to the following files would be overwritten by merge:
+error verirse
+git remote add origin https://github.com/idrakseyfullayev/todoproject.git
+git pull origin todoprupdate-8
+pip install -r requirements.txt - requirements.txt fayli lazimi yere yuklemek
+
+
+
+cd <qovluq> - qovluga kecid
+ls  - qovlugun icindeki hem qovluq ve fayllari
+pwd - yolu gosterir- hal hazirdaki hardayiq
+
+
+pip install -r requirements.txt - requirements.txt fayli lazimi yere yuklemek
+
+
+python manage.py collectstatic - static fayllari bir qovluga toplayir
+
+
